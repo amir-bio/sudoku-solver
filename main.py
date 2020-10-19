@@ -8,6 +8,8 @@ Board = List[List[int]]
 def solve(board: Board) -> Union[Board, None]:
     """Given a sudoku board (2d array of ints) will return a solution of the sudoku board.
 
+    The given board is assumed to be already valid.
+
     Args:
         board (Board): The unsolved sudoku board. A value of in any cell '0'
         indicates an unset cell.
@@ -78,22 +80,3 @@ def next_empty_cell(board: Board) -> Tuple[positionOrNone, positionOrNone]:
             if col == 0:
                 return (i, j)
     return (None, None)
-
-
-sample_unsolved_board = [
-    [1, 0, 8, 0, 0, 0, 0, 5, 3],
-    [7, 0, 2, 5, 0, 3, 0, 0, 0],
-    [0, 0, 0, 8, 1, 0, 0, 2, 6],
-    [0, 0, 7, 0, 8, 4, 2, 0, 0],
-    [0, 1, 5, 0, 3, 2, 0, 0, 0],
-    [4, 2, 6, 0, 5, 0, 0, 0, 0],
-    [3, 0, 0, 2, 7, 0, 0, 6, 0],
-    [2, 0, 0, 0, 0, 0, 4, 8, 7],
-    [0, 0, 9, 0, 4, 8, 5, 0, 0]
-]
-
-# print("Unsolved board")
-# pprint(sample_unsolved_board)
-
-# print("\n\nSolved board")
-# pprint(solve(sample_unsolved_board))
