@@ -11,3 +11,4 @@ To run the unit tests: `pytest`
 * A sudoku generator (uses the solver internally)
 * Unit tests (very basic and minimal, just on the main function)
 * Gitlab CI support for running tests
+* Github Actions for running tests
