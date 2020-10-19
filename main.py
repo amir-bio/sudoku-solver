@@ -1,5 +1,6 @@
 from typing import List, Tuple, Union  # , Set, Dict, , Optional
 from pprint import pprint
+import random
 
 Board = List[List[int]]
 
@@ -20,7 +21,10 @@ def solve(board: Board) -> Union[Board, None]:
     if row is None or col is None:
         return board
 
-    for i in range(1, 10):
+    # shuffle the list of numbers to guess instead of going incrementall from 1 to 9
+    # The solution will still be valid, and this is utilised by the generater to
+    # generate valid sudoku boards.
+    for i in random.sample(range(1, 10), 9):
         if valid_value(board, row, col, i):
             board[row][col] = i
 
@@ -76,20 +80,20 @@ def next_empty_cell(board: Board) -> Tuple[positionOrNone, positionOrNone]:
     return (None, None)
 
 
-sample_unsolved_board = board = [
-    [7, 8, 0, 4, 0, 0, 1, 2, 0],
-    [6, 0, 0, 0, 7, 5, 0, 0, 9],
-    [0, 0, 0, 6, 0, 1, 0, 7, 8],
-    [0, 0, 7, 0, 4, 0, 2, 6, 0],
-    [0, 0, 1, 0, 5, 0, 9, 3, 0],
-    [9, 0, 4, 0, 6, 0, 0, 0, 5],
-    [0, 7, 0, 3, 0, 0, 0, 1, 2],
-    [1, 2, 0, 0, 0, 7, 4, 0, 0],
-    [0, 4, 9, 2, 0, 6, 0, 0, 7]
+sample_unsolved_board = [
+    [1, 0, 8, 0, 0, 0, 0, 5, 3],
+    [7, 0, 2, 5, 0, 3, 0, 0, 0],
+    [0, 0, 0, 8, 1, 0, 0, 2, 6],
+    [0, 0, 7, 0, 8, 4, 2, 0, 0],
+    [0, 1, 5, 0, 3, 2, 0, 0, 0],
+    [4, 2, 6, 0, 5, 0, 0, 0, 0],
+    [3, 0, 0, 2, 7, 0, 0, 6, 0],
+    [2, 0, 0, 0, 0, 0, 4, 8, 7],
+    [0, 0, 9, 0, 4, 8, 5, 0, 0]
 ]
 
-print("Unsolved board")
-pprint(sample_unsolved_board)
+# print("Unsolved board")
+# pprint(sample_unsolved_board)
 
-print("\n\nSolved board")
-pprint(solve(sample_unsolved_board))
+# print("\n\nSolved board")
+# pprint(solve(sample_unsolved_board))
